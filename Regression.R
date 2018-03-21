@@ -1,0 +1,11 @@
+insurance <- read.csv("D:\\workdir\\insurance.csv", stringsAsFactors = T)
+str(insurance)
+summary(insurance$charges)
+hist(insurance$charges)
+cor(insurance[c("age", "bmi", "children", "charges")])
+pairs(insurance[c("age", "bmi", "children", "charges")])
+install.packages("psych")
+library(psych)
+pairs.panels(insurance[c("age", "bmi", "children", "charges")])
+ins_model <- lm(charges ~ age + children + bmi + sex + smoker + region, data = insurance)
+ins_model
